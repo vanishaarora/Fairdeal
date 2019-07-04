@@ -23,7 +23,7 @@ const { SubMenu } = Menu;
 
 
 
-class Products extends React.Component {
+class Womensfashion extends React.Component {
     constructor(props){
         super(props);
     }
@@ -85,48 +85,23 @@ class Products extends React.Component {
     </a>
   </Dropdown>
   
+                    <Link to="/home"><button className="btn-sm btn-dark"><Icon type="home"/>Home</button></Link>
                     <Link to="/wishlist"><button className="btn-sm btn-dark "><Icon type="heart" />Wishlist</button></Link>
                     <Link to="/cart"><button className="btn-sm btn-dark "><Icon type="shopping-cart" /> Cart</button></Link>
                     <Link to="/orders"><button className="btn-sm btn-dark">Your Orders</button></Link>
                     <Link to="/"><Button size="sm" color="dark"><Icon type="logout"/>Logout</Button></Link>  
-                
                 </Navbar><br />
-                <div >
-                    <Carousel >
-                        <Carousel.Item>
-                            <img
-                                className="d-block w-100 img"
-                                src="https://w3layouts.b-cdn.net/wp-content/uploads/2016/08/mrs_mall.jpg"
-                                alt="First slide"
-                            />
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <img
-                                className="d-block w-100 img"
-                                src="https://static.toiimg.com/photo/59632433/.jpg"
-                                alt="second slide"
-                            />
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <img
-                                className="d-block w-100 img"
-                                src="https://h4x2w4j2.stackpathcdn.com/wp-content/uploads/2019/01/Zigcy-Lite.png"
-                                alt="Third slide"
-                            />
-                        </Carousel.Item>
-                    </Carousel><br />
-                </div>
                 <div>
-                    <h1 className="setbold">Happy shopping!!</h1>
+                    <h1 className="setbold1">Women's Fashion!!</h1>
 
                     {cardcomponent}
                     <Pagination className="border" defaultCurrent={0} total={db.products.length} onChange={(p) => { pageChanged(p) }} className="align"></Pagination>
                 </div>
-            
+                
             </div>
         )
     }
 
 }
 
-export default Products;
+export default Womensfashion;

@@ -32,7 +32,7 @@ addToOrders:this.props.addToOrders
    }
    componentDidMount(){
      
-  axios.get('http://localhost:8080/cart').then((res)=>{
+  axios.get('/cart').then((res)=>{
     let db = this.state.db;
     db.cart = res.data
     this.setState({db:db})
@@ -59,15 +59,15 @@ dataBase=(db,deleteProduct, addToOrders, changeQuantity)=>{
         />
 
         <div>
-        Quantity:
+        
     
 
           <select onChange={(e) => { changeQuantity(item, e) }}>
+            <option>Choose Quantity:</option>
             <option>1</option>
             <option>2</option>
             <option>3</option>
           </select>
-          <Link to="/buy" onClick={addToOrders}><Button className="border" >Buy</Button></Link>
           <Button onClick={deleteProduct}>Delete</Button>
         </div>
 
@@ -97,7 +97,8 @@ dataBase=(db,deleteProduct, addToOrders, changeQuantity)=>{
           this.dataBase(db,deleteProduct, addToOrders, changeQuantity)
         }
         <h2 className="align">Total : {db.cart.length && db.cart.reduce((sum,item) => sum + item.price * item.quantity, 0)}</h2>
-
+        <Link to="/buy" onClick={deleteProduct}><Button color="primary" size="lg" block className="border">Buy</Button></Link>
+          
       </div>
 
     </div>

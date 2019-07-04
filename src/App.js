@@ -12,7 +12,8 @@ import "firebase/auth";
 import Buy from './Buy';
 import payment from './payment';
 import Orders from './orders';
-
+import Mensfashion from './mensfashion';
+import Womensfashion from './womensfashion';
 
 var firebaseConfig = {
   apiKey: "AIzaSyDfJ3FAIhDxxS5CVWrXwGQasmZzycJ46yQ",
@@ -171,7 +172,7 @@ class App extends Component {
 
   addProductToCart(item) {
     console.log(item);
-axios.post("http://localhost:8080/cart",item).then((res)=>{
+axios.post("/cart",item).then((res)=>{
   console.log(res.data);
   item.quantity = 1;
     
@@ -235,7 +236,12 @@ axios.post("http://localhost:8080/cart",item).then((res)=>{
   }
   deleteProduct(item, e) {
     let db = this.state.db;
+    
     let i = db.cart.indexOf(item);
+    /*axios.delete("https://localhost:8080/cart/"+cart.id)
+    .then((res)=>{
+      console.log(res);
+    })*/
     db.cart.splice(i, 1);
     this.setState(
 
@@ -269,7 +275,9 @@ axios.post("http://localhost:8080/cart",item).then((res)=>{
       <Route path="/buy" component={Buy} />
       <Route path="/payment" component={payment} />
       <Route path="/orders" render={(props) => <Orders {...props} db={this.state.db} deleteProduct={this.deleteProduct.bind(this)}></Orders>} />
-
+      <Route path="/mensfashion" render={(props) => <Mensfashion {...props} db={this.state.db} addProduct={this.addProductToCart.bind(this)} pageChanged={this.pageChanged.bind(this)} wishlistProduct={this.addProductToWishlist.bind(this)} changeQuantityWishlist={this.changeQuantityWishlist.bind(this)} />} />
+      <Route path="/womensfashion" render={(props) => <Womensfashion {...props} db={this.state.db} addProduct={this.addProductToCart.bind(this)} pageChanged={this.pageChanged.bind(this)} wishlistProduct={this.addProductToWishlist.bind(this)} changeQuantityWishlist={this.changeQuantityWishlist.bind(this)} />} />
+     
 
     </div>
     )
